@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+  <p>
+    <strong>navigator.userAgent</strong><br>
+    <code>navigator.userAgent</code><br>
+    <span id="uaEnvValue"></span><br>
+  </p>
+  <p>
+    <strong>navigator.userAgent.indexOf('Mobi') &gt; -1</strong><br>
+    <code>navigator.userAgent.indexOf('Mobi') &gt; -1</code><br>
+    <span id="uaResult"></span><br>
+  </p>
+  <p>
+    <strong>screen.width</strong><br>
+    <code>screen.width</code><br>
+    <span id="widthEnvValue"></span><br>
+  </p>
+  <p>
+    <strong>screen.height</strong><br>
+    <code>screen.height</code><br>
+    <span id="heightEnvValue"></span><br>
+  </p>
+  <p>
+    <strong>Math.max(screen.width, screen.height) &lt;= 768</strong><br>
+    <code>Math.max(screen.width, screen.height) &lt;= 768</code><br>
+    <span id="screenResult"></span><br>
+  </p>
+  <p>
+    <strong>navigator.maxTouchPoints</strong><br>
+    <code>navigator.maxTouchPoints</code><br>
+    <span id="touchEnvValue"></span><br>
+  </p>
+  <p>
+    <strong>navigator.maxTouchPoints &gt; 0</strong><br>
+    <code>navigator.maxTouchPoints &gt; 0</code><br>
+    <span id="touchResult"></span><br>
+  </p>
+  <p>
+    <strong>matchMedia('(max-width:768px)').matches</strong><br>
+    <code>typeof matchMedia === 'function' &amp;&amp; matchMedia('(max-width:768px)').matches</code><br>
+    <span id="mediaResult"></span><br>
+  </p>
+  <p>
+    <strong>/Galaxy Z|SM-F|Pixel Fold/.test(navigator.userAgent) || (window.visualViewport &amp;&amp; window.visualViewport.segments &amp;&amp; window.visualViewport.segments.length &gt; 1)</strong><br>
+    <code>/Galaxy Z|SM-F|Pixel Fold/.test(navigator.userAgent) || (window.visualViewport &amp;&amp; window.visualViewport.segments &amp;&amp; window.visualViewport.segments.length &gt; 1)</code><br>
+    <span id="foldableResult"></span><br>
+  </p>
+  <p>
+    <strong>navigator.userAgentData &amp;&amp; navigator.userAgentData.mobile</strong><br>
+    <code>navigator.userAgentData &amp;&amp; navigator.userAgentData.mobile</code><br>
+    <span id="hintsResult"></span><br>
+  </p>
+  <script>
+    var ua = navigator.userAgent || '';
+    var width = screen.width || 0;
+    var height = screen.height || 0;
+    var maxTouchPoints = navigator.maxTouchPoints || 0;
+
+    document.getElementById('uaEnvValue').innerText = ua;
+    document.getElementById('widthEnvValue').innerText = width;
+    document.getElementById('heightEnvValue').innerText = height;
+    document.getElementById('touchEnvValue').innerText = maxTouchPoints;
+
+    var uaResult = (ua.indexOf('Mobi') > -1);
+    var touchResult = (maxTouchPoints > 0);
+    var mediaResult = false;
+    if (typeof matchMedia === 'function') {
+      mediaResult = matchMedia('(max-width:768px)').matches;
+    }
+    var screenResult = (Math.max(width, height) <= 768);
+
+    var foldableResult = false;
+    if (/[Gg]alaxy Z|SM-F|Pixel Fold/.test(ua)) {
+      foldableResult = true;
+    } else if (window.visualViewport && window.visualViewport.segments) {
+      foldableResult = (window.visualViewport.segments.length > 1);
+    }
+
+    var hintsResult = 'unsupported';
+    if (navigator.userAgentData && typeof navigator.userAgentData.mobile !== 'undefined') {
+      hintsResult = navigator.userAgentData.mobile;
+    }
+
+    document.getElementById('uaResult').innerText = uaResult;
+    document.getElementById('touchResult').innerText = touchResult;
+    document.getElementById('mediaResult').innerText = mediaResult;
+    document.getElementById('screenResult').innerText = screenResult;
+    document.getElementById('foldableResult').innerText = foldableResult;
+    document.getElementById('hintsResult').innerText = hintsResult;
+  </script>
+</body>
+
+</html>
