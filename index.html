@@ -11,8 +11,12 @@
   <script>
     'use strict';
     function addRow(expr, value) {
-      document.body.insertAdjacentHTML('beforeend',
-        '<p><code>' + expr + '</code>: ' + value + '</p>');
+      var p = document.createElement('p');
+      var code = document.createElement('code');
+      code.textContent = expr;
+      p.appendChild(code);
+      p.appendChild(document.createTextNode(': ' + value));
+      document.body.appendChild(p);
     }
 
     addRow('navigator.userAgent', navigator.userAgent);
@@ -50,7 +54,7 @@
     addRow("'mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices",
       'mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices);
     addRow("'sync' in ServiceWorkerRegistration.prototype",
-      'sync' in ServiceWorkerRegistration.prototype);
+      typeof ServiceWorkerRegistration !== 'undefined' && 'sync' in ServiceWorkerRegistration.prototype);
   </script>
   <footer>
     <p><a href="https://github.com/wantaekchoi/detect"
