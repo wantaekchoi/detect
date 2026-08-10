@@ -4,10 +4,16 @@
 
 # Detect
 
-A simple browser and device feature detection.
+A simple browser and device feature detection page.
+
+**Live demo**: https://wantaekchoi.github.io/detect/
 
 - [MDN: Feature Detection Guide](https://developer.mozilla.org/docs/Learn_web_development/Extensions/Testing/Feature_detection)
 - [MDN: Browser Detection](https://developer.mozilla.org/docs/Web/HTTP/Guides/Browser_detection_using_the_user_agent)
+
+## How it works
+
+Each check is an `{ expr, fn }` pair evaluated inside a shared `try/catch`. If an API doesn't exist in the current browser (e.g. an older browser missing `ServiceWorkerRegistration`), that check just renders `false` instead of crashing — one missing API can't take the rest of the report down with it.
 
 ## Features
 - **navigator.userAgent**: [Browser and OS information](https://developer.mozilla.org/docs/Web/API/Navigator/userAgent)

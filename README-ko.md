@@ -4,10 +4,16 @@
 
 # Detect
 
-브라우저 및 장치 기능 감지 확인
+브라우저 및 장치 기능 감지 페이지
+
+**라이브 데모**: https://wantaekchoi.github.io/detect/
 
 - [MDN: Feature Detection Guide](https://developer.mozilla.org/docs/Learn_web_development/Extensions/Testing/Feature_detection)
 - [MDN: 사용자 에이전트를 사용한 브라우저 감지](https://developer.mozilla.org/ko/docs/Web/HTTP/Guides/Browser_detection_using_the_user_agent)
+
+## 동작 방식
+
+각 체크는 `{ expr, fn }` 쌍으로 정의되고 공용 `try/catch` 안에서 실행됩니다. 현재 브라우저에 해당 API가 없으면(예: `ServiceWorkerRegistration`을 지원 안 하는 구형 브라우저) 그 체크는 페이지를 죽이지 않고 그냥 `false`로 표시됩니다 — API 하나가 없다고 나머지 결과까지 전부 날아가지 않습니다.
 
 ## 주요 기능
 - **navigator.userAgent**: [브라우저 및 OS 정보](https://developer.mozilla.org/docs/Web/API/Navigator/userAgent)
