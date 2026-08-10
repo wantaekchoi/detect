@@ -5,6 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Detect</title>
+  <style>
+    body {
+      font-family: monospace;
+    }
+  </style>
 </head>
 
 <body>
@@ -19,42 +24,66 @@
       document.body.appendChild(p);
     }
 
-    addRow('navigator.userAgent', navigator.userAgent);
-    addRow('screen.width', screen.width);
-    addRow('screen.height', screen.height);
-    addRow('navigator.maxTouchPoints', navigator.maxTouchPoints);
+    var checks = [
+      { expr: 'navigator.userAgent', fn: function () { return navigator.userAgent; } },
+      { expr: 'navigator.language', fn: function () { return navigator.language; } },
+      { expr: 'screen.width', fn: function () { return screen.width; } },
+      { expr: 'screen.height', fn: function () { return screen.height; } },
+      { expr: 'navigator.maxTouchPoints', fn: function () { return navigator.maxTouchPoints; } },
+      { expr: 'navigator.hardwareConcurrency', fn: function () { return navigator.hardwareConcurrency; } },
 
-    addRow("'serviceWorker' in navigator", 'serviceWorker' in navigator);
-    addRow("'localStorage' in window", 'localStorage' in window);
-    addRow("'geolocation' in navigator", 'geolocation' in navigator);
-    addRow("typeof matchMedia === 'function'", typeof matchMedia === 'function');
-    addRow("matchMedia('(prefers-color-scheme: dark)').matches",
-      typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches);
+      { expr: "'serviceWorker' in navigator", fn: function () { return 'serviceWorker' in navigator; } },
+      { expr: "'localStorage' in window", fn: function () { return 'localStorage' in window; } },
+      { expr: "'geolocation' in navigator", fn: function () { return 'geolocation' in navigator; } },
+      { expr: "typeof matchMedia === 'function'", fn: function () { return typeof matchMedia === 'function'; } },
+      {
+        expr: "matchMedia('(prefers-color-scheme: dark)').matches",
+        fn: function () { return matchMedia('(prefers-color-scheme: dark)').matches; }
+      },
 
-    addRow("'indexedDB' in window", 'indexedDB' in window);
-    addRow("'WebSocket' in window", 'WebSocket' in window);
-    addRow("'RTCPeerConnection' in window", 'RTCPeerConnection' in window);
+      { expr: "'indexedDB' in window", fn: function () { return 'indexedDB' in window; } },
+      { expr: "'WebSocket' in window", fn: function () { return 'WebSocket' in window; } },
+      { expr: "'RTCPeerConnection' in window", fn: function () { return 'RTCPeerConnection' in window; } },
+      { expr: 'navigator.onLine', fn: function () { return navigator.onLine; } },
+      {
+        expr: "'connection' in navigator && navigator.connection.effectiveType",
+        fn: function () { return 'connection' in navigator && navigator.connection.effectiveType; }
+      },
 
-    addRow("CSS.supports('display','grid')", CSS.supports ? CSS.supports('display', 'grid') : false);
-    addRow("'WebAssembly' in window", 'WebAssembly' in window);
-    addRow("'WebGLRenderingContext' in window", 'WebGLRenderingContext' in window);
+      { expr: "CSS.supports('display','grid')", fn: function () { return CSS.supports('display', 'grid'); } },
+      { expr: "'WebAssembly' in window", fn: function () { return 'WebAssembly' in window; } },
+      { expr: "'WebGLRenderingContext' in window", fn: function () { return 'WebGLRenderingContext' in window; } },
 
-    addRow("'ontouchstart' in window", 'ontouchstart' in window);
-    addRow("'PointerEvent' in window", 'PointerEvent' in window);
-    addRow("'pointerEnabled' in Navigator.prototype", 'pointerEnabled' in Navigator.prototype);
-    addRow("'DeviceOrientationEvent' in window", 'DeviceOrientationEvent' in window);
+      { expr: "'ontouchstart' in window", fn: function () { return 'ontouchstart' in window; } },
+      { expr: "'PointerEvent' in window", fn: function () { return 'PointerEvent' in window; } },
+      { expr: "'pointerEnabled' in Navigator.prototype", fn: function () { return 'pointerEnabled' in Navigator.prototype; } },
+      { expr: "'DeviceOrientationEvent' in window", fn: function () { return 'DeviceOrientationEvent' in window; } },
 
-    addRow("'PushManager' in window", 'PushManager' in window);
-    addRow("'Notification' in window", 'Notification' in window);
-    addRow("'PaymentRequest' in window", 'PaymentRequest' in window);
+      { expr: "'PushManager' in window", fn: function () { return 'PushManager' in window; } },
+      { expr: "'Notification' in window", fn: function () { return 'Notification' in window; } },
+      { expr: "'PaymentRequest' in window", fn: function () { return 'PaymentRequest' in window; } },
+      { expr: "'clipboard' in navigator", fn: function () { return 'clipboard' in navigator; } },
+      { expr: "'share' in navigator", fn: function () { return 'share' in navigator; } },
 
-    addRow("typeof navigator.getInstalledRelatedApps === 'function'",
-      typeof navigator.getInstalledRelatedApps === 'function');
-    addRow("typeof navigator.getBattery === 'function'", typeof navigator.getBattery === 'function');
-    addRow("'mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices",
-      'mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices);
-    addRow("'sync' in ServiceWorkerRegistration.prototype",
-      typeof ServiceWorkerRegistration !== 'undefined' && 'sync' in ServiceWorkerRegistration.prototype);
+      {
+        expr: "typeof navigator.getInstalledRelatedApps === 'function'",
+        fn: function () { return typeof navigator.getInstalledRelatedApps === 'function'; }
+      },
+      { expr: "typeof navigator.getBattery === 'function'", fn: function () { return typeof navigator.getBattery === 'function'; } },
+      {
+        expr: "'mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices",
+        fn: function () { return 'mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices; }
+      },
+      { expr: "'sync' in ServiceWorkerRegistration.prototype", fn: function () { return 'sync' in ServiceWorkerRegistration.prototype; } }
+    ];
+
+    checks.forEach(function (c) {
+      try {
+        addRow(c.expr, c.fn());
+      } catch (e) {
+        addRow(c.expr, false);
+      }
+    });
   </script>
   <footer>
     <p><a href="https://github.com/wantaekchoi/detect"

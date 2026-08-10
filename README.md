@@ -11,8 +11,10 @@ A simple browser and device feature detection.
 
 ## Features
 - **navigator.userAgent**: [Browser and OS information](https://developer.mozilla.org/docs/Web/API/Navigator/userAgent)
+- **navigator.language**: [Preferred browser language](https://developer.mozilla.org/docs/Web/API/Navigator/language)
 - **screen.width, screen.height**: [Screen resolution](https://developer.mozilla.org/docs/Web/API/Screen)
 - **navigator.maxTouchPoints**: [Touch support](https://developer.mozilla.org/docs/Web/API/Navigator/maxTouchPoints)
+- **navigator.hardwareConcurrency**: [Logical CPU core count](https://developer.mozilla.org/docs/Web/API/Navigator/hardwareConcurrency)
 - **'serviceWorker' in navigator**: [Service Worker support (offline caching)](https://developer.mozilla.org/docs/Web/API/Service_Worker_API)
 - **'localStorage' in window**: [LocalStorage support (client-side storage)](https://developer.mozilla.org/docs/Web/API/Window/localStorage)
 - **'geolocation' in navigator**: [Geolocation API support](https://developer.mozilla.org/docs/Web/API/Geolocation_API)
@@ -21,6 +23,8 @@ A simple browser and device feature detection.
 - **'indexedDB' in window**: [IndexedDB support (client database)](https://developer.mozilla.org/docs/Web/API/IndexedDB_API)
 - **'WebSocket' in window**: [WebSocket support (real-time messaging)](https://developer.mozilla.org/docs/Web/API/WebSocket)
 - **'RTCPeerConnection' in window**: [WebRTC support (real-time media)](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection)
+- **navigator.onLine**: [Online/offline status](https://developer.mozilla.org/docs/Web/API/Navigator/onLine)
+- **'connection' in navigator && navigator.connection.effectiveType**: [Effective network type (Network Information API)](https://developer.mozilla.org/docs/Web/API/NetworkInformation/effectiveType)
 - **CSS.supports('display','grid')**: [CSS Grid support](https://developer.mozilla.org/docs/Web/API/CSS/supports)
 - **'WebAssembly' in window**: [WebAssembly support (high-performance modules)](https://developer.mozilla.org/docs/WebAssembly)
 - **'WebGLRenderingContext' in window**: [WebGL support (3D graphics)](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext)
@@ -31,6 +35,8 @@ A simple browser and device feature detection.
 - **'PushManager' in window**: [Push API support (background push)](https://developer.mozilla.org/docs/Web/API/PushManager)
 - **'Notification' in window**: [Notification API support](https://developer.mozilla.org/docs/Web/API/Notification)
 - **'PaymentRequest' in window**: [Payment Request API support (one-click checkout)](https://developer.mozilla.org/docs/Web/API/Payment_Request_API)
+- **'clipboard' in navigator**: [Clipboard API support](https://developer.mozilla.org/docs/Web/API/Clipboard_API)
+- **'share' in navigator**: [Web Share API support](https://developer.mozilla.org/docs/Web/API/Navigator/share)
 - **typeof navigator.getInstalledRelatedApps === 'function'**: [Installed Related Apps API (deep-link branching)](https://developer.mozilla.org/docs/Web/API/Navigator/getInstalledRelatedApps)
 - **typeof navigator.getBattery === 'function'**: [Battery Status API support](https://developer.mozilla.org/docs/Web/API/Battery_Status_API)
 - **'mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices**: [Camera & microphone access](https://developer.mozilla.org/docs/Web/API/MediaDevices)

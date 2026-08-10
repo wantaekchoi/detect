@@ -11,8 +11,10 @@
 
 ## 주요 기능
 - **navigator.userAgent**: [브라우저 및 OS 정보](https://developer.mozilla.org/docs/Web/API/Navigator/userAgent)
+- **navigator.language**: [브라우저 선호 언어](https://developer.mozilla.org/docs/Web/API/Navigator/language)
 - **screen.width, screen.height**: [화면 해상도](https://developer.mozilla.org/docs/Web/API/Screen)
 - **navigator.maxTouchPoints**: [터치 지원 여부](https://developer.mozilla.org/docs/Web/API/Navigator/maxTouchPoints)
+- **navigator.hardwareConcurrency**: [논리 CPU 코어 수](https://developer.mozilla.org/docs/Web/API/Navigator/hardwareConcurrency)
 - **'serviceWorker' in navigator**: [서비스워커 지원 (오프라인 캐싱)](https://developer.mozilla.org/docs/Web/API/Service_Worker_API)
 - **'localStorage' in window**: [로컬 스토리지 지원](https://developer.mozilla.org/docs/Web/API/Window/localStorage)
 - **'geolocation' in navigator**: [위치 정보 API 지원](https://developer.mozilla.org/docs/Web/API/Geolocation_API)
@@ -21,6 +23,8 @@
 - **'indexedDB' in window**: [IndexedDB 지원](https://developer.mozilla.org/docs/Web/API/IndexedDB_API)
 - **'WebSocket' in window**: [WebSocket 지원](https://developer.mozilla.org/docs/Web/API/WebSocket)
 - **'RTCPeerConnection' in window**: [WebRTC 지원](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection)
+- **navigator.onLine**: [온라인/오프라인 상태](https://developer.mozilla.org/docs/Web/API/Navigator/onLine)
+- **'connection' in navigator && navigator.connection.effectiveType**: [체감 네트워크 등급 (Network Information API)](https://developer.mozilla.org/docs/Web/API/NetworkInformation/effectiveType)
 - **CSS.supports('display','grid')**: [CSS Grid 지원](https://developer.mozilla.org/docs/Web/API/CSS/supports)
 - **'WebAssembly' in window**: [WebAssembly 지원](https://developer.mozilla.org/docs/WebAssembly)
 - **'WebGLRenderingContext' in window**: [WebGL 지원](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext)
@@ -31,6 +35,8 @@
 - **'PushManager' in window**: [Push API 지원](https://developer.mozilla.org/docs/Web/API/PushManager)
 - **'Notification' in window**: [Notification API 지원](https://developer.mozilla.org/docs/Web/API/Notification)
 - **'PaymentRequest' in window**: [Payment Request API 지원](https://developer.mozilla.org/docs/Web/API/Payment_Request_API)
+- **'clipboard' in navigator**: [클립보드 API 지원](https://developer.mozilla.org/docs/Web/API/Clipboard_API)
+- **'share' in navigator**: [웹 공유 API 지원](https://developer.mozilla.org/docs/Web/API/Navigator/share)
 - **typeof navigator.getInstalledRelatedApps === 'function'**: [설치된 관련 앱 API 지원](https://developer.mozilla.org/docs/Web/API/Navigator/getInstalledRelatedApps)
 - **typeof navigator.getBattery === 'function'**: [배터리 상태 API 지원](https://developer.mozilla.org/docs/Web/API/Battery_Status_API)
 - **'mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices**: [카메라·마이크 접근](https://developer.mozilla.org/docs/Web/API/MediaDevices)
